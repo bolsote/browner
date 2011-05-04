@@ -1,0 +1,34 @@
+{% extends "generic/app.html" %}
+
+{% block stylesheet %}add.css{% endblock %}
+
+{% block content %}
+		<table>
+			<tr>
+				<th>Task</th>
+			</tr>
+			{% for task in tasklist %}
+			<tr>
+				<td>{{ task }}</td>
+			</tr>
+			{% endfor %}
+		</table>
+
+		<form method="post" action="/add/">
+		{% csrf_token %}
+			<input type="submit" value="↑ add"    name="add"    class="button">
+			<input type="submit" value="remove →" name="remove" class="button">
+			
+			<input id="id_user" type="text" name="user" placeholder="username" value="{{ user.username }}">
+			<input id="id_task" type="text" name="task" placeholder="task">
+		</form>
+{% endblock %}
+
+{% block footer %}
+		<a href="/">Tasks</a> |
+		{% if user.is_staff %}
+		<a href="/admin">Admin interface</a> |
+		{% endif %}
+		<a href="/logout">Logout</a>
+{% endblock %}
+

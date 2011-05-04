@@ -1,0 +1,41 @@
+{% load static %}
+
+<!doctype html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+
+	<link rel="stylesheet" type="text/css" href="{% get_static_prefix %}css/generic/base.css">
+	<link rel="stylesheet" type="text/css" href="{% get_static_prefix %}css/login.css">
+
+	<script src="{% get_static_prefix %}js/jquery-1.6.min.js"></script>
+	<script>
+		$(document).ready( function() {
+			$("#errorbox").delay(3000).fadeOut();
+		});
+	</script>
+
+	<title>Brown dispatcher</title>
+</head>
+
+<body>
+	<div id="namebox">Browner</div>
+
+	{% if form.errors %}
+	<div id="errorbox">Incorrect login credentials</div>
+	{% endif %}
+
+	<div id="loginbox">
+		<form method="post" action="{% url django.contrib.auth.views.login %}">
+		{% csrf_token %}
+			<input id="id_username" type="text"     name="username" placeholder="username"><br>
+			<input id="id_password" type="password" name="password" placeholder="password"><br>
+
+			<input type="submit" value="login" id="loginbutton">
+			<input type="hidden" name="next" value="/">
+		</form>
+	</div>
+</body>
+</html>
+

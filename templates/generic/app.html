@@ -1,0 +1,30 @@
+{% load static %}
+
+<!doctype html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+
+	<link rel="stylesheet" type="text/css" href="{% get_static_prefix %}css/generic/base.css">
+	<link rel="stylesheet" type="text/css" href="{% get_static_prefix %}css/generic/app.css">
+	<link rel="stylesheet" type="text/css" href="{% get_static_prefix %}css/{% block stylesheet %}{% endblock %}">
+
+	<title>Brown dispatcher</title>
+</head>
+
+<body>
+	<div id="namebox">Browner</div>
+
+	<div id="brownbox">
+	{% block content %}
+	{% endblock%}
+	</div>
+
+	<div id="adminbox">
+	{% block footer %}
+	{% endblock %}
+	</div>
+</body>
+</html>
+

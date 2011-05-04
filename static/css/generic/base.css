@@ -1,0 +1,30 @@
+/*
+ * Colorscheme: Adobe Kuler, Brown Duck theme
+ *              (http://kuler.adobe.com/#themeID/122348).
+ */
+
+body {
+	background-color: rgb(255, 250, 250);
+	font-family: Sans-Serif;
+}
+
+#namebox {
+	position: relative;
+	top: 80px;
+
+	width: 93%;
+	min-width: 500px;
+	height: 60px;
+
+	margin: 0 auto;
+	padding: 0;
+
+	color: rgb(38, 19, 24);
+
+	text-align: left;
+	font-size: 100px;
+	font-weight: bold;
+
+	z-index: 1;
+}
+

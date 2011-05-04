@@ -1,0 +1,32 @@
+{% extends "generic/app.html" %}
+
+{% block stylesheet %}browner.css{% endblock %}
+
+{% block content %}
+		<table>
+			<tr>
+				<th class="arrow"></th>
+				<th>Task</th>
+			</tr>
+			{% for task in tasklist %}
+			<tr id="{{ task.number }}">
+				<td class="arrow">{% if task.number == "one" %}<b>→</b></td>{% endif %}</td>
+				<td>{{ task.brown }}</td>
+			</tr>
+			{% endfor %}
+		</table>
+
+		<form method="post" action="/pop/">
+		{% csrf_token %}
+			<input type="submit" value="pop" class="button">
+		</form>
+{% endblock %}
+
+{% block footer %}
+		{% if user.is_staff %}
+		<a href="/add">Add tasks</a> |
+		<a href="/admin">Admin interface</a> |
+		{% endif %}
+		<a href="/logout">Logout</a>
+{% endblock %}
+
