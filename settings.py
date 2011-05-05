@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -20,9 +20,9 @@ DATABASES = {
 }
 
 TIME_ZONE = ''
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-es'
 USE_I18N = False
-USE_L10N = True
+USE_L10N = False
 
 ADMIN_MEDIA_PREFIX = '/static/admin/'
 
@@ -33,7 +33,7 @@ TEMPLATE_LOADERS = (
 	'django.template.loaders.app_directories.Loader',
 )
 TEMPLATE_DIRS = (
-	"/home/victorm/code/tasklist/browner/templates",
+	'/home/victorm/code/tasklist/browner/templates',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -54,13 +54,13 @@ INSTALLED_APPS = (
 )
 
 ROOT_URLCONF = 'browner.urls'
-APPEND_SLASH = True;
+APPEND_SLASH = True
 
 LOGIN_URL = '/login';
-SESSION_EXPIRE_AT_BROWSER_CLOSE = True;
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
-	"/home/victorm/code/tasklist/browner/static",
+	'/home/victorm/code/tasklist/browner/static',
 )
 

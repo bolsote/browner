@@ -5,11 +5,13 @@
 {% block content %}
 		<table>
 			<tr>
+				<th class="user">User</th>
 				<th>Task</th>
 			</tr>
 			{% for task in tasklist %}
 			<tr>
-				<td>{{ task }}</td>
+				<td class="user">{{ task.browned }}</td>
+				<td><abbr title="{{ task.timestamp }}">{{ task.brown   }}</abbr></td>
 			</tr>
 			{% endfor %}
 		</table>

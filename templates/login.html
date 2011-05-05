@@ -1,15 +1,13 @@
-{% load static %}
-
 <!doctype html>
 
 <html lang="en">
 <head>
 	<meta charset="utf-8">
 
-	<link rel="stylesheet" type="text/css" href="{% get_static_prefix %}css/generic/base.css">
-	<link rel="stylesheet" type="text/css" href="{% get_static_prefix %}css/login.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/generic/base.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/login.css">
 
-	<script src="{% get_static_prefix %}js/jquery-1.6.min.js"></script>
+	<script src="/static/js/jquery-1.6.min.js"></script>
 	<script>
 		$(document).ready( function() {
 			$("#errorbox").delay(3000).fadeOut();

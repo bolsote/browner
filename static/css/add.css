@@ -1,9 +1,14 @@
+th.user,
+td.user { width: 20%; }
+
 tr {
 	border: solid 1px rgb(107, 55, 44);
 
 	background-color: rgb(255, 250, 250);
 	color:            rgb(107,  55,  44);
 }
+
+abbr { border-bottom: 0 none; }
 
 .button { width: 49%; }
 

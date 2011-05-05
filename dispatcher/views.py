@@ -25,6 +25,7 @@ def main(request):
 			except IndexError:
 				break
 
+
 	return render_to_response('browner.html',
 	                          {'tasklist' : tasklist},
 	                          context_instance = RequestContext(request))
@@ -33,6 +34,7 @@ def main(request):
 @login_required
 def pop(request):
 	db.browns.update({'browned' : request.user.username} , {"$pop" : {'browns' : -1}})
+
 
 	return HttpResponseRedirect('/')
 
@@ -49,19 +51,20 @@ def add(request):
 		elif 'remove' in request.POST and 'user' in request.POST:
 			db.browns.update({'browned' : request.POST['user']}  , {"$pop" : {'browns' : -1}})
 
+
 		return HttpResponseRedirect('/add')
 	else:
-		allbrowns = db.browns.find(fields={'browns' : 1})
-
-		brownlist = []
-		for brown in allbrowns:
-			brownlist.extend(brown['browns'])
-		brownlist.sort(key=lambda brown: brown['timestamp'])
+		users = db.browns.find()
 
 		tasklist = []
 
-		for brown in brownlist:
-			tasklist.append(brown['brown'])
+		for user in users:
+			browned = user['browned']
+			for brown in user['browns']:
+				tasklist.append({'browned' : browned , 'brown' : brown['brown'], 'timestamp' : brown['timestamp']})
+
+		tasklist.sort(key=lambda brown: brown['timestamp'])
+
 
 		return render_to_response('add.html',
 								  {'tasklist' : tasklist},
