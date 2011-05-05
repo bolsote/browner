@@ -5,7 +5,7 @@ Browner
 
 About
 =====
-This web application is a simple multiuser tasklist, developed to demonstrate how to quickly develop applications with Django and MongoDB.
+This web application is a simple multiuser tasklist, developed to demonstrate how to quickly develop applications using Django and MongoDB.
 
 Dependencies
 ============
@@ -26,5 +26,5 @@ Since MongoDB is a schemaless database it does not require any special attention
 
 License
 =======
-This is beerware, which means: use, copy, modify or redistribute my code. If you like it and get to know me, buy me a beer.
+This is beerware, which means: use, copy, modify or redistribute my code, as long as you give me credit. If you like it and get to know me, buy me a beer.
 
