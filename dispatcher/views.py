@@ -17,7 +17,6 @@ def main(request):
 
 	numbers = ["one", "two", "three", "four"]
 	tasklist = []
-
 	if browns:
 		for k in range(0, len(numbers)):
 			try:
@@ -42,14 +41,16 @@ def pop(request):
 @login_required
 def add(request):
 	if request.method == 'POST':
-		if 'add' in request.POST and 'user' in request.POST:
-			if db.browns.find_one({'browned' : request.POST['user']}):
-				db.browns.update({'browned' : request.POST['user']},
+		username = request.POST['user'] if request.POST['user'] else request.user.username
+
+		if 'add' in request.POST:
+			if db.browns.find_one({'browned' : username}):
+				db.browns.update({'browned' : username},
 				                 {"$push" : {'browns' : {'brown' : request.POST['task'] , 'timestamp' : datetime.datetime.utcnow()}}})
 			else:
-				db.browns.insert({'browned' : request.POST['user'] , 'browns' : [ {'brown' : request.POST['task'] , 'timestamp' : datetime.datetime.utcnow()} ] })
-		elif 'remove' in request.POST and 'user' in request.POST:
-			db.browns.update({'browned' : request.POST['user']}  , {"$pop" : {'browns' : -1}})
+				db.browns.insert({'browned' : username , 'browns' : [ {'brown' : request.POST['task'] , 'timestamp' : datetime.datetime.utcnow()} ] })
+		elif 'remove' in request.POST:
+			db.browns.update({'browned' : username}  , {"$pop" : {'browns' : -1}})
 
 
 		return HttpResponseRedirect('/add')
@@ -57,12 +58,10 @@ def add(request):
 		users = db.browns.find()
 
 		tasklist = []
-
 		for user in users:
 			browned = user['browned']
 			for brown in user['browns']:
 				tasklist.append({'browned' : browned , 'brown' : brown['brown'], 'timestamp' : brown['timestamp']})
-
 		tasklist.sort(key=lambda brown: brown['timestamp'])
 
 
