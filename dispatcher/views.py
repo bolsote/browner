@@ -44,11 +44,9 @@ def add(request):
 		username = request.POST['user'] if request.POST['user'] else request.user.username
 
 		if 'add' in request.POST:
-			if db.browns.find_one({'browned' : username}):
-				db.browns.update({'browned' : username},
-				                 {"$push" : {'browns' : {'brown' : request.POST['task'] , 'timestamp' : datetime.datetime.utcnow()}}})
-			else:
-				db.browns.insert({'browned' : username , 'browns' : [ {'brown' : request.POST['task'] , 'timestamp' : datetime.datetime.utcnow()} ] })
+			db.browns.update({'browned' : username},
+			                 {"$push" : {'browns' : {'brown' : request.POST['task'] , 'timestamp' : datetime.datetime.utcnow()}}},
+			                 upsert=True)
 		elif 'remove' in request.POST:
 			db.browns.update({'browned' : username}  , {"$pop" : {'browns' : -1}})
 
