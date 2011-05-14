@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
 
+import os
+PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
+
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -33,7 +37,7 @@ TEMPLATE_LOADERS = (
 	'django.template.loaders.app_directories.Loader',
 )
 TEMPLATE_DIRS = (
-	'/home/victorm/code/tasklist/browner/templates',
+	os.path.join(PROJECT_PATH, 'templates'),
 )
 
 MIDDLEWARE_CLASSES = (
@@ -61,6 +65,6 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
-	'/home/victorm/code/tasklist/browner/static',
+	os.path.join(PROJECT_PATH, 'static'),
 )
 
